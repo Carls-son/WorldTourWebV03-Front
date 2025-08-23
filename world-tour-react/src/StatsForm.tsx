@@ -42,23 +42,35 @@ function StatsForm() {
         <div className="form-container">
             <h2>ADD MATCH STATS</h2>
             <div className="select-container">
-              <Select options={stadiums} classNamePrefix="select" placeholder="Stadium" components={{DropdownIndicator: () => null, IndicatorSeparator: () => null }}/>
-              <Select options={classes} classNamePrefix="select" placeholder="Class" components={{DropdownIndicator: () => null, IndicatorSeparator: () => null }}/>
-              <Select options={placement} classNamePrefix="select" placeholder="Placement" components={{DropdownIndicator: () => null, IndicatorSeparator: () => null }}/>
+              <Select options={stadiums} isSearchable={false} className="select-stadium" classNamePrefix="select" placeholder="Stadium" components={{DropdownIndicator: () => null, IndicatorSeparator: () => null }}/>
+              <Select options={classes} isSearchable={false} className="select-class" classNamePrefix="select" placeholder="Class" components={{DropdownIndicator: () => null, IndicatorSeparator: () => null }}/>
+              <Select options={placement} isSearchable={false} className="select-placement" classNamePrefix="select" placeholder="Placement" components={{DropdownIndicator: () => null, IndicatorSeparator: () => null }}/>
             </div>
             
             <div className="input-container">
-                <label htmlFor="elims">Eliminations</label>
-                <input type="number" value={elims} onChange={e => setElims(e.target.value)} />
-                <label htmlFor="assists">Assists</label>
-                <input type="number" value={assists} onChange={e => setAssists(e.target.value)} />
-                <label htmlFor="deaths">Deaths</label>
-                <input type="number" value={deaths} onChange={e => setDeaths(e.target.value)} />
-                <label htmlFor="revives">Revives</label>
-                <input type="number" value={revives} onChange={e => setRevives(e.target.value)} />
+                <div className="stats-container">
+                    <label htmlFor="elims">Eliminations</label>
+                    <input type="number" className="input" value={elims} onChange={e => setElims(e.target.value)} />
+                </div>
+                <div className="stats-container">
+                    <label htmlFor="assists">Assists</label>
+                    <input type="number" className="input" value={assists} onChange={e => setAssists(e.target.value)} />
+                </div>
+                <div className="stats-container">
+                    <label htmlFor="deaths">Deaths</label>
+                    <input type="number" className="input" value={deaths} onChange={e => setDeaths(e.target.value)} />
+                </div>
+                <div className="stats-container">
+                    <label htmlFor="revives">Revives</label>
+                    <input type="number" className="input" value={revives} onChange={e => setRevives(e.target.value)} />
+                </div>
             </div>
 
-            <button type="submit">Submit</button>
+            <div className="button-container">
+                <button type="submit">
+                    <h4>SUBMIT</h4>
+                </button>
+            </div>
           </div>
     )   
 }

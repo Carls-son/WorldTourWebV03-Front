@@ -12,10 +12,21 @@
   display: flex;
   
 }
-.input-container {
-  display: flex;
-  flex-direction: column;
+.select-stadium {
+  width: 158px;
+  text-align: center;
 }
+
+.select-class {
+  width: 99px;
+  text-align: center;
+}
+
+.select-placement {
+  width: 112px;
+  text-align: center;
+}
+
 .select__control {
   margin: 16px;
   background-color: #1D1A20b3 !important;
@@ -45,22 +56,72 @@
 .select__option--is-selected {
   background-color: var(--color-button-yellow) !important;
 }
-
+.select__control--is-focused {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+.stats-container {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+.input {
+  justify-content: right;
+  margin: 2%;
+  border-radius: 8px;
+  
+}
 input {
   text-align: center;
   max-width: 32px;
   background-color: #1D1A20b3;
   color: var(--color-neutral-light);
   border: none;
-  border-bottom: 2px solid var(--color-neutral-light);
+  border-bottom: 3px solid #1D1A20b3;
   padding: 8px 12px;
   margin: 8px 0;
   appearance: textfield;
   -moz-appearance: textfield;
+}
+input:focus {
+  border-color: #FFD700;
+  outline: none;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  width: 112px;
+  background-color: #FFC107;
+  color: #1D1A20;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--color-button-yellow);
+}
+h4 {
+  font-family: 'Saira', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: var(--color-neutral-dark) !important;
 }
