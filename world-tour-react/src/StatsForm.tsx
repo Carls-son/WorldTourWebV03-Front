@@ -33,18 +33,50 @@ function StatsForm() {
         { value: 'eighth', label: '8TH' }
     ];
 
+    type OptionType = { value: string; label: string };
+
+    const [selectedStadium, setSelectedStadium] = useState<OptionType | null>(null);
+    const [selectedClass, setSelectedClass] = useState<OptionType | null>(null);
+    const [selectedPlacement, setSelectedPlacement] = useState<OptionType | null>(null);
+
     const [elims, setElims] = useState<string>("");
     const [assists, setAssists] = useState<string>("");
     const [deaths, setDeaths] = useState<string>("");
     const [revives, setRevives] = useState<string>("");
-    
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        // Handle form submission
+        const formData = {
+            stadium: selectedStadium?.value || "",
+            class: selectedClass?.value || "",
+            placement: selectedPlacement?.value || "",
+            elims,
+            assists,
+            deaths,
+            revives
+        };
+
+        // Send formdata here
+        
+        console.log(formData);
+
+        setSelectedStadium(null);
+        setSelectedClass(null);
+        setSelectedPlacement(null);
+        setElims("");
+        setAssists("");
+        setDeaths("");
+        setRevives("");
+    }
+
     return (
-        <div className="form-container">
+        <form onSubmit={handleSubmit} className="form-container">
             <h2>ADD MATCH STATS</h2>
             <div className="select-container">
-              <Select options={stadiums} isSearchable={false} className="select-stadium" classNamePrefix="select" placeholder="Stadium" components={{DropdownIndicator: () => null, IndicatorSeparator: () => null }}/>
-              <Select options={classes} isSearchable={false} className="select-class" classNamePrefix="select" placeholder="Class" components={{DropdownIndicator: () => null, IndicatorSeparator: () => null }}/>
-              <Select options={placement} isSearchable={false} className="select-placement" classNamePrefix="select" placeholder="Placement" components={{DropdownIndicator: () => null, IndicatorSeparator: () => null }}/>
+              <Select options={stadiums} value={selectedStadium} onChange={setSelectedStadium} isSearchable={false} className="select-stadium" classNamePrefix="select" placeholder="Stadium" components={{DropdownIndicator: () => null, IndicatorSeparator: () => null }} />
+              <Select options={classes} value={selectedClass} onChange={setSelectedClass} isSearchable={false} className="select-class" classNamePrefix="select" placeholder="Class" components={{DropdownIndicator: () => null, IndicatorSeparator: () => null }} />
+              <Select options={placement} value={selectedPlacement} onChange={setSelectedPlacement} isSearchable={false} className="select-placement" classNamePrefix="select" placeholder="Placement" components={{DropdownIndicator: () => null, IndicatorSeparator: () => null }} />
             </div>
             
             <div className="input-container">
@@ -71,7 +103,7 @@ function StatsForm() {
                     <h4>SUBMIT</h4>
                 </button>
             </div>
-          </div>
+          </form>
     )   
 }
 
