@@ -2,7 +2,21 @@ import './StatsForm.css'
 import Select from "react-select";
 import { useState } from "react";
 
-function StatsForm() {
+type OptionType = { value: string; label: string };
+
+type StatsFormProps = {
+    onSubmit: (data: {
+    stadium: string;
+    class: string;
+    placement: string;
+    elims: string;
+    assists: string;
+    deaths: string;
+    revives: string;
+  }) => void;
+};
+
+function StatsForm({ onSubmit }: StatsFormProps) {
     const stadiums = [
     { value: 'nozomi/citadel', label: 'NOZOMI/CITADEL' },
     { value: 'las vegas stadium', label: 'Las Vegas Stadium' },
@@ -15,13 +29,11 @@ function StatsForm() {
     { value: 'seoul', label: 'Seoul' },
     { value: 'monaco', label: 'Monaco' },
     ];
-
     const classes = [
         { value: 'light', label: 'Light' },
         { value: 'medium', label: 'Medium' },
         { value: 'heavy', label: 'Heavy' }
     ];
-
     const placement = [
         { value: 'first', label: '1ST' },
         { value: 'second', label: '2ND' },
@@ -33,7 +45,7 @@ function StatsForm() {
         { value: 'eighth', label: '8TH' }
     ];
 
-    type OptionType = { value: string; label: string };
+    
 
     const [selectedStadium, setSelectedStadium] = useState<OptionType | null>(null);
     const [selectedClass, setSelectedClass] = useState<OptionType | null>(null);
@@ -58,7 +70,7 @@ function StatsForm() {
         };
 
         // Send formdata here
-        
+        onSubmit(formData);
         console.log(formData);
 
         setSelectedStadium(null);
@@ -68,7 +80,7 @@ function StatsForm() {
         setAssists("");
         setDeaths("");
         setRevives("");
-    }
+    };
 
     return (
         <form onSubmit={handleSubmit} className="form-container">
