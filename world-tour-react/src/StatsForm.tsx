@@ -56,7 +56,7 @@ function StatsForm({ onSubmit }: StatsFormProps) {
     const [deaths, setDeaths] = useState<string>("");
     const [revives, setRevives] = useState<string>("");
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         // Handle form submission
         const formData = {
@@ -71,6 +71,12 @@ function StatsForm({ onSubmit }: StatsFormProps) {
 
         // Send formdata here
         onSubmit(formData);
+        await fetch("http://localhost:5298/api/stats", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+        });
+
         console.log(formData);
 
         setSelectedStadium(null);
