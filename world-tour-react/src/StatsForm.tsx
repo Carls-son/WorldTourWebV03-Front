@@ -100,19 +100,39 @@ function StatsForm({ onSubmit }: StatsFormProps) {
             <div className="input-container">
                 <div className="stats-container">
                     <label htmlFor="elims">Eliminations</label>
-                    <input type="number" className="input" value={elims} onChange={e => setElims(e.target.value)} />
+                    <input 
+                        type="number" 
+                        className="input" 
+                        value={elims} 
+                        onChange={e => setElims(e.target.value)} 
+                    />
                 </div>
                 <div className="stats-container">
                     <label htmlFor="assists">Assists</label>
-                    <input type="number" className="input" value={assists} onChange={e => setAssists(e.target.value)} />
+                    <input 
+                        type="number" 
+                        className="input" 
+                        value={assists} 
+                        onChange={e => setAssists(e.target.value)} 
+                    />
                 </div>
                 <div className="stats-container">
                     <label htmlFor="deaths">Deaths</label>
-                    <input type="number" className="input" value={deaths} onChange={e => setDeaths(e.target.value)} />
+                    <input 
+                        type="number" 
+                        className="input" 
+                        value={deaths} 
+                        onChange={e => setDeaths(e.target.value)} 
+                    />
                 </div>
                 <div className="stats-container">
                     <label htmlFor="revives">Revives</label>
-                    <input type="number" className="input" value={revives} onChange={e => setRevives(e.target.value)} />
+                    <input 
+                        type="number" 
+                        className="input" 
+                        value={revives} 
+                        onChange={e => setRevives(e.target.value)} 
+                    />
                 </div>
             </div>
 

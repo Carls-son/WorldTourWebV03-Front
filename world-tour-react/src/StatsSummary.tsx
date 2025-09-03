@@ -19,12 +19,15 @@ type ServerSummary = {
   avgAssists: number;
   avgDeaths: number;
   avgRevives: number;
+  totalWins: number;
+  winRate: number;
 };
 
 function StatsSummary({ formData }: SummaryProps) {
   const [summary, setSummary] = useState<ServerSummary | null>(null);
 
   useEffect(() => {
+    console.log("Fetching summary data...");
     fetch("http://localhost:5298/api/stats/summary")
       .then(res => res.json())
       .then(data => setSummary(data));
@@ -57,7 +60,13 @@ function StatsSummary({ formData }: SummaryProps) {
             <p>
               <strong>Average Revives:</strong> {summary && summary.avgRevives.toFixed(2)}
             </p>
-              </div>
+            <p>
+              <strong>Total Wins:</strong> {summary && summary.totalWins}
+            </p>
+            <p>
+              <strong>Win Rate:</strong> {summary && summary.winRate.toFixed(2)}%
+            </p>
+          </div>
         
     )
 }
